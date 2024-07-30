@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import NavBar from "./Design/Components/NavBar";
+import Design from "./Design/Design";
 
 function App() {
   return (
@@ -21,8 +22,7 @@ function App() {
     //   </header>
     // </div>
     <div>
-      <p>as</p>
-      <NavBar />
+      <Design/>
     </div>
   );
 }
