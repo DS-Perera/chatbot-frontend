@@ -28,11 +28,11 @@ const NavBar = (prop) => {
   ];
 
   return (
-    <div className="navbar">
+    <div className="navBar">
       {items.map((item, index) => (
         <div key={index}>
           <div
-            className={`navbar-item ${activeItem === index ? "active" : ""}`}
+            className={`navBar-item ${activeItem === index ? "active" : ""}`}
             onClick={() => handleItemClick(index)}
           >
             <div className="img">

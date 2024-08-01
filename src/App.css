@@ -2,11 +2,32 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #f0f0f0;
-  /* Just to make the navbar stand out */
+  /* background-color: #f0f0f0; */
+  /* Just to make the navBar stand out */
 }
 
-.navbar {
+.page {
+  height: 100vh;
+  background-image: url('./Design/Assets/mainBackground.jpg');
+  /* background: red; */
+  /* Replace with your image path */
+  background-size: cover;
+  /* Ensures the image covers the entire screen */
+  background-position: center;
+  /* Centers the image */
+  background-attachment: fixed;
+  /* Makes the background fixed during scrolling */
+  background-repeat: no-repeat;
+  /* Prevents the image from repeating */
+}
+
+p {
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: 0px !important;
+}
+
+.navBar {
   position: fixed;
   bottom: 20px;
   left: 50%;
@@ -19,7 +40,7 @@ body {
   z-index: 1000;
 }
 
-.navbar-item {
+.navBar-item {
   margin: 0 15px;
   display: flex;
   justify-content: center;
@@ -30,22 +51,55 @@ body {
   cursor: pointer;
 }
 
-.navbar-item img {
+.navBar-item img {
   width: 30px;
   height: 30px;
 }
 
-.navbar-item.active img {
+.navBar-item.active img {
   width: 30px;
   height: 29px;
   filter: brightness(0) invert(1);
 }
 
-.navbar-item.active {
+.navBar-item.active {
   background: linear-gradient(45deg, #635bee, #af5ff4);
 }
+
 /* 
-.navbar-item:hover img {
+.navBar-item:hover img {
   filter: brightness(0.95);
   cursor: pointer;
 } */
+
+.initial h1 {
+  font-size: 80px;
+  font-weight: 700;
+  background: linear-gradient(45deg, #635bee, #af5ff4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.initial .btn {
+  font-weight: 600;
+  background: linear-gradient(45deg, #635bee, #af5ff4) !important;
+  outline: none;
+  border: #635bee;
+}
+
+.initial h1 {
+  font-size: 80px;
+  font-weight: 700;
+  background: linear-gradient(45deg, #635bee, #af5ff4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.initial h2 {
+  font-weight: 300;
+  color: #635bee;
+}
+
+.primary-clr {
+  color: #635bee;
+}
