@@ -2,39 +2,104 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #f0f0f0;
-  /* Just to make the navbar stand out */
+  /* background-color: #f0f0f0; */
+  /* Just to make the navBar stand out */
 }
 
-.navbar {
+.page {
+  height: 100vh;
+  background-image: url('./Design/Assets/mainBackground.jpg');
+  /* background: red; */
+  /* Replace with your image path */
+  background-size: cover;
+  /* Ensures the image covers the entire screen */
+  background-position: center;
+  /* Centers the image */
+  background-attachment: fixed;
+  /* Makes the background fixed during scrolling */
+  background-repeat: no-repeat;
+  /* Prevents the image from repeating */
+}
+
+p {
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: 0px !important;
+}
+
+.navBar {
   position: fixed;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #dadae1;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   padding: 10px 20px;
   z-index: 1000;
 }
 
-.navbar-item {
+.navBar-item {
   margin: 0 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.navbar-item img {
-  width: 70px;
-  /* Placeholder image size */
-  height: 70px;
-  border-radius: 50%;
-  /* Optional: to make the images circular */
-}
-
-.navbar-item:hover img {
-  filter: brightness(0.8);
+  background: #ffffff;
+  border-radius: 15%;
+  padding: 10px;
   cursor: pointer;
+}
+
+.navBar-item img {
+  width: 30px;
+  height: 30px;
+}
+
+.navBar-item.active img {
+  width: 30px;
+  height: 29px;
+  filter: brightness(0) invert(1);
+}
+
+.navBar-item.active {
+  background: linear-gradient(45deg, #635bee, #af5ff4);
+}
+
+/* 
+.navBar-item:hover img {
+  filter: brightness(0.95);
+  cursor: pointer;
+} */
+
+.initial h1 {
+  font-size: 80px;
+  font-weight: 700;
+  background: linear-gradient(45deg, #635bee, #af5ff4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.initial .btn {
+  font-weight: 600;
+  background: linear-gradient(45deg, #635bee, #af5ff4) !important;
+  outline: none;
+  border: #635bee;
+}
+
+.initial h1 {
+  font-size: 80px;
+  font-weight: 700;
+  background: linear-gradient(45deg, #635bee, #af5ff4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.initial h2 {
+  font-weight: 300;
+  color: #635bee;
+}
+
+.primary-clr {
+  color: #635bee;
 }
