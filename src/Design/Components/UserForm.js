@@ -13,8 +13,7 @@ const UserForm = ({ chatId, onSubmit }) => {
       localStorage.setItem("userName", name);
       localStorage.setItem("userNumber", number);
       axios
-        .post("http://localhost:3002/submitUserData", {
-          // .post(`${config.apiBaseUrl}/submitUserData`, {
+        .post(`http://localhost:3002/submitUserData`, {
           chatId,
           name,
           number,
@@ -33,9 +32,7 @@ const UserForm = ({ chatId, onSubmit }) => {
       <div className="">
         <div className="card-body">
           <form onSubmit={handleSubmit}>
-            <p className="text-center mb-5">
-              Welcome to chat with Chatbot {userName}
-            </p>
+            <p className="text-center mb-5">Welcome to chat with Chatbot</p>
             <div className="mb-3">
               <input
                 type="text"

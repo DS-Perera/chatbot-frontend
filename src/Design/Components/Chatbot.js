@@ -4,7 +4,6 @@ import person from "../Assets/person.png";
 import bankLogo from "../Assets/bankLogo.jpg";
 import ChatOpen from "../Assets/ChatOpen.png";
 import Delete from "../Assets/delete.png";
-import config from "../../config";
 import UserForm from "./UserForm"; // Import the UserForm component
 
 const Chatbot = () => {
@@ -93,7 +92,8 @@ const Chatbot = () => {
   const fetchChatHistory = async (chatId) => {
     try {
       const response = await axios.get(
-        `${config.apiBaseUrl}/chatHistory/${chatId}`
+        `http://localhost:3002/chatHistory/${chatId}`
+        // `http://localhost:3002/chatHistory/${chatId}`
       );
       if (response.data && response.data.chatHistory) {
         setMessages(response.data.chatHistory);
