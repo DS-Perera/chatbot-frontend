@@ -29,7 +29,7 @@ const NavBar = (prop) => {
 
   return (
     <div className="navBar">
-      {activeItem}
+      {/* {activeItem} */}
       {items.map((item, index) => (
         <div key={index}>
           <div

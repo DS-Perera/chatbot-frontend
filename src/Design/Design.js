@@ -10,27 +10,40 @@ import Agents from "./Pages/Agents";
 import User from "./Pages/User";
 import Links from "./Pages/Links";
 import AddNew from "./Pages/AddNew";
+import Login from "./Pages/Login";
 
 export default function Design() {
-  const [activeItem, setActiveItem] = React.useState("a");
+  const [activeItem, setActiveItem] = React.useState(0);
+  const [login, setLogin] = React.useState(true);
   const [userName, setUserName] = React.useState("Darshana");
   return (
     <div>
+      {login && (
+        <div className="page">
+          <Login setLogin={setLogin} />
+        </div>
+      )}
+      {!login && (
+        <div className="page">
+          <div>
+            <NavBar setActiveItem={setActiveItem} activeItem={activeItem} />
+            <div className="page">
+              {activeItem === "a" && <Initial setActiveItem={setActiveItem} />}
+              {activeItem === 0 && <Dashboard userName={userName} />}
+              {activeItem === 1 && <AddNew userName={userName} />}
+              {/* {activeItem === 1 && <Chatbots userName={userName} />} */}
+              {activeItem === 2 && <Chats />}
+              {activeItem === 3 && <Leads />}
+              {activeItem === 4 && <Links />}
+              {activeItem === 5 && <Customize />}
+              {activeItem === 6 && <Agents />}
+              {activeItem === 7 && <User />}
+            </div>
+          </div>
+        </div>
+      )}
       {/* <p>asasas</p> */}
-      {activeItem}
-      <NavBar setActiveItem={setActiveItem} activeItem={activeItem} />
-      <div className="page">
-        {activeItem === "a" && <Initial setActiveItem={setActiveItem} />}
-        {activeItem === 0 && <Dashboard userName={userName} />}
-        {activeItem === 1 && <AddNew userName={userName} />}
-        {/* {activeItem === 1 && <Chatbots userName={userName} />} */}
-        {activeItem === 2 && <Chats />}
-        {activeItem === 3 && <Leads />}
-        {activeItem === 4 && <Links />}
-        {activeItem === 5 && <Customize />}
-        {activeItem === 6 && <Agents />}
-        {activeItem === 7 && <User />}
-      </div>
+      {/* {activeItem} */}
     </div>
   );
 }
