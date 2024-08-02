@@ -4,6 +4,7 @@ import WebIcon from "../Assets/WebIcon.png";
 import AppIcon from "../Assets/AppIcon.png";
 import WhstappIcon from "../Assets/WhstappIcon.png";
 import wpIcon from "../Assets/wpIcon.png";
+import Chatbot from "../Components/Chatbot";
 
 const Intergrations = [
   { name: "Web Site ", icon: WebIcon },
@@ -16,6 +17,7 @@ export default function Links(prop) {
   return (
     <div>
       <TopBar userName={prop.userName} title="Dashboard > Intergrations" />
+      <Chatbot />
       <div className="container card rounded-3 py-5 px-5">
         <h2 className="page-title mb-3 primary-clr">Chatbots Intergrations</h2>
         <div className="row">

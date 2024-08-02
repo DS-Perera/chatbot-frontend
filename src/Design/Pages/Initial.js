@@ -30,8 +30,8 @@ export default function Initial(prop) {
         <button
           className="btn btn-primary px-5 py-2 font-weight-bold"
           onClick={() => {
-            prop.setActiveItem(0);
-            console.log("object");
+            prop.setLogin(false);
+            // console.log("object");
           }}
         >
           Get Started

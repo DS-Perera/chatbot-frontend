@@ -14,13 +14,18 @@ import Login from "./Pages/Login";
 
 export default function Design() {
   const [activeItem, setActiveItem] = React.useState(0);
-  const [login, setLogin] = React.useState(true);
+  const [login, setLogin] = React.useState(false); //change to tru
+  const [login2, setLogin2] = React.useState(true);
   const [userName, setUserName] = React.useState("Darshana");
   return (
     <div>
       {login && (
         <div className="page">
-          <Login setLogin={setLogin} />
+          {login2 ? (
+            <Initial setLogin={setLogin2} />
+          ) : (
+            <Login setLogin={setLogin} />
+          )}
         </div>
       )}
       {!login && (
@@ -28,7 +33,7 @@ export default function Design() {
           <div>
             <NavBar setActiveItem={setActiveItem} activeItem={activeItem} />
             <div className="page">
-              {activeItem === "a" && <Initial setActiveItem={setActiveItem} />}
+              {/* {activeItem === 0 && <Initial setActiveItem={setActiveItem} />} */}
               {activeItem === 0 && <Dashboard userName={userName} />}
               {activeItem === 1 && <AddNew userName={userName} />}
               {/* {activeItem === 1 && <Chatbots userName={userName} />} */}
