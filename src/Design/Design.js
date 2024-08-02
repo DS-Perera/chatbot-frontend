@@ -9,19 +9,21 @@ import Customize from "./Pages/Customize";
 import Agents from "./Pages/Agents";
 import User from "./Pages/User";
 import Links from "./Pages/Links";
+import AddNew from "./Pages/AddNew";
 
 export default function Design() {
-  const [activeItem, setActiveItem] = React.useState(1);
+  const [activeItem, setActiveItem] = React.useState("a");
   const [userName, setUserName] = React.useState("Darshana");
   return (
     <div>
-      {/* <p>asasas</p>
-      {activeItem} */}
+      {/* <p>asasas</p> */}
+      {activeItem}
       <NavBar setActiveItem={setActiveItem} activeItem={activeItem} />
       <div className="page">
         {activeItem === "a" && <Initial setActiveItem={setActiveItem} />}
         {activeItem === 0 && <Dashboard userName={userName} />}
-        {activeItem === 1 && <Chatbots userName={userName} />}
+        {activeItem === 1 && <AddNew userName={userName} />}
+        {/* {activeItem === 1 && <Chatbots userName={userName} />} */}
         {activeItem === 2 && <Chats />}
         {activeItem === 3 && <Leads />}
         {activeItem === 4 && <Links />}

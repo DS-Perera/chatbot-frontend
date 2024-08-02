@@ -87,6 +87,13 @@ p {
   border: #635bee;
 }
 
+.btn2 {
+  font-weight: 600;
+  background: linear-gradient(45deg, #635bee, #af5ff4) !important;
+  outline: none;
+  border: #635bee;
+}
+
 .initial h1 {
   font-size: 80px;
   font-weight: 700;
@@ -102,4 +109,68 @@ p {
 
 .primary-clr {
   color: #635bee;
+}
+
+.card-height {
+  height: 250px;
+  /* Set a fixed height for all cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-height img {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.card-height h4 {
+  margin-top: 10px;
+}
+
+.page-title {
+  font-weight: 200;
+}
+
+
+
+.create-chatbot label {
+  font-weight: 500;
+  color: #3731a5;
+  margin-bottom: 5px;
+
+}
+
+.create-chatbot textarea {
+  box-shadow: 0px 0px 5px #1e1c423f;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.chat-window {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  height: 400px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+}
+
+.user-message {
+  background-color: #e0f7fa;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.bot-message {
+  background-color: #fce4ec;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.input-group {
+  width: 100%;
 }

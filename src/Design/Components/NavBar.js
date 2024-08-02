@@ -9,7 +9,7 @@ import agent from "../Assets/agent.png";
 import acc from "../Assets/acc.png";
 
 const NavBar = (prop) => {
-  const [activeItem, setActiveItem] = useState(null);
+  const [activeItem, setActiveItem] = useState(prop.activeItem);
 
   const handleItemClick = (item) => {
     setActiveItem(item);
@@ -29,6 +29,7 @@ const NavBar = (prop) => {
 
   return (
     <div className="navBar">
+      {activeItem}
       {items.map((item, index) => (
         <div key={index}>
           <div
