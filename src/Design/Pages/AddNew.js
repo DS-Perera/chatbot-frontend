@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TopBar from "../Components/TopBar";
 
 export default function AddNew(prop) {
@@ -10,6 +10,23 @@ export default function AddNew(prop) {
     productsServiceDescription: "",
     contactDetails: "",
   });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:3002/userExistingData");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setContent(data);
+      } catch (error) {
+        console.error("Error fetching existing data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleInputChange = (event) => {
     const { id, value } = event.target;
@@ -100,8 +117,28 @@ export default function AddNew(prop) {
           <div className="col-md-12 d-flex justify-content-end">
             <button
               className="btn btn2 btn-primary px-5 py-2 font-weight-bold"
-              onClick={() => {
-                console.log("object");
+              onClick={async () => {
+                try {
+                  const response = await fetch(
+                    "http://localhost:3002/storeTextareaContent",
+                    {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify(content),
+                    }
+                  );
+
+                  if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                  }
+
+                  const data = await response.json();
+                  console.log("Data saved:", data);
+                } catch (error) {
+                  console.error("Error saving data:", error);
+                }
               }}
             >
               Save and Continue

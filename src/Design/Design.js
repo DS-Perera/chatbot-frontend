@@ -13,7 +13,7 @@ import AddNew from "./Pages/AddNew";
 import Login from "./Pages/Login";
 
 export default function Design() {
-  const [activeItem, setActiveItem] = React.useState(0);
+  const [activeItem, setActiveItem] = React.useState(4);
   const [login, setLogin] = React.useState(false); //change to tru
   const [login2, setLogin2] = React.useState(true);
   const [userName, setUserName] = React.useState("Darshana");

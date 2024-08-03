@@ -13,11 +13,15 @@ const Chatbot = () => {
   const [chatId, setChatId] = useState(null);
   const [source, setSource] = useState("");
   const [controlActive, setControlActive] = useState(true); // State to track control status
+  const [initialLoad, setInitialLoad] = useState(true); // State to track initial load
+  const [initialMessageSent, setInitialMessageSent] = useState(false); // Flag for initial message
+  const [welcomeText, setWelcomeText] = useState("Welcome to AI chatbot"); // Flag for initial message
   const messagesEndRef = useRef(null); // Ref for the chat container
   const [userInfo, setUserInfo] = useState({
     name: localStorage.getItem("userName") || "",
     number: localStorage.getItem("userNumber") || "",
   });
+
   useEffect(() => {
     const storedChatId = localStorage.getItem("chatId");
     if (storedChatId) {
@@ -76,6 +80,36 @@ const Chatbot = () => {
     scrollToBottom();
   }, [messages]);
 
+  useEffect(() => {
+    if (initialLoad && !initialMessageSent) {
+      setMessages([
+        {
+          role: "assistant",
+          content: welcomeText,
+        },
+      ]);
+      setInitialLoad(false);
+      setInitialMessageSent(true); // Set the flag to true after sending the message
+    }
+  }, [initialLoad, initialMessageSent]);
+
+  useEffect(() => {
+    // Call chatStartingMsj API and print the output to the console
+    const fetchStartingMessage = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:3002/chatStartingMsj"
+        );
+        console.log("Starting message response:", response.data);
+        setWelcomeText(response.data);
+      } catch (error) {
+        console.error("Error fetching starting message:", error);
+      }
+    };
+
+    fetchStartingMessage();
+  }, []); // Empty dependency array to run only once on mount
+
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
@@ -93,12 +127,44 @@ const Chatbot = () => {
     try {
       const response = await axios.get(
         `http://localhost:3002/chatHistory/${chatId}`
-        // `http://localhost:3002/chatHistory/${chatId}`
       );
       if (response.data && response.data.chatHistory) {
-        setMessages(response.data.chatHistory);
+        const chatHistory = response.data.chatHistory;
+
+        // Check if the starting message is already in chatHistory
+        const hasStartingMessage = chatHistory.some(
+          (msg) => msg.content === "Welcome! "
+        );
+
+        if (initialLoad && !hasStartingMessage) {
+          // Set starting message from bot
+          setMessages((prevMessages) => [
+            ...prevMessages,
+            {
+              role: "assistant",
+              content: "Welcome! How can I assist you today?",
+            },
+          ]);
+          setInitialLoad(false);
+          setInitialMessageSent(true); // Set the flag to true after sending the message
+        } else {
+          setMessages(chatHistory);
+        }
+        scrollToBottom(); // Ensure the new message is visible
       } else {
-        setMessages([]);
+        // Handle case where chat history is empty and not the initial load
+        if (initialLoad) {
+          setMessages([
+            {
+              role: "assistant",
+              content: "Welcome! How can I assist you today?",
+            },
+          ]);
+          setInitialLoad(false);
+          setInitialMessageSent(true); // Set the flag to true after sending the message
+        } else {
+          setMessages([]);
+        }
       }
     } catch (error) {
       console.error("Error fetching chat history:", error);

@@ -173,10 +173,9 @@ const Chats = (prop) => {
       <TopBar userName={prop.userName} title="Dashboard > Conversations" />
       <div className="chat-list card card rounded-3 py-5 px-5">
         <h2 className="page-title mb-3 primary-clr">
-          Chatbots Intergrations {filteredUserData.length}
+          Chatbots Integrations {filteredUserData.length}
         </h2>
         <div className="chat-list-container">
-          {/* <h2>All Chat Histories ()</h2> */}
           <Tab.Container
             className="chat-list-container"
             id="left-tabs-example"
@@ -184,7 +183,9 @@ const Chats = (prop) => {
             onSelect={(k) => setActiveChatId(k)}
           >
             <Row>
-              <Col sm={3}>
+              <Col sm={3} className="scrollable-tabs">
+                {" "}
+                {/* Apply scrollable-tabs class here */}
                 <Nav variant="pills" className="flex-column primary-clr">
                   {filteredUserData.map((user) => (
                     <Nav.Item key={user.chatId}>
